@@ -1,0 +1,225 @@
+{% extends "layoutAdmin.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <!--breadcrumbs start -->
+        <ul class="breadcrumb">
+            <li class="active">Menu de Entidades</li>
+            <li><a style="color: rgb(95, 93, 93);"><i class="fa fa-plus-circle"></i> Adicionar </a></li>
+        </ul>
+        <!--breadcrumbs end -->
+    </div>
+
+    <div class="col-md-12">
+        <!-- Mostrar Mensagens enviadas pelo Servidor -->
+        {% include 'message.html' %}
+    </div>
+
+    <!-- Pesquisar Entidade -->
+    <div class="col-md-12">
+      <form action="{{url_for('entidads.entidades')}}" method="get">
+        <div class="box-tools m-b-15">
+            <div class="input-group">
+                <input type="text" name="search" value="{{search}}" class="form-control input-sm pull-right" autocomplete="off" style="width: 250px;" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<!-- Entidades -->
+<div class="row">
+
+    <!-- formulario -->
+    <div class="col-lg-4">
+        <section class="panel">
+            <header class="panel-heading">
+                Formulário
+            </header>
+            <div class="panel-body">
+                   <!-- formulário de criação de conta -->
+        <form role="form" method="POST" action="{{url_for('entidads.entidades')}}">
+            {{ form.hidden_tag() }}
+  
+                <!-- Nome -->
+                <div class="form-group">
+        
+                    {{ form.nome.label(class="form-control-label")}}
+                    
+                    {% if form.nome.errors %}
+                      {{ form.nome(class="form-control form-control is-invalid",placeholder="Nome da Entidade",autocomplete="off")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.nome.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.nome(class="form-control form-control",placeholder="Nome da Entidade",autocomplete="off")}}
+                    {% endif %}
+                </div>
+
+                <!-- email -->
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label")}}
+                    
+                    {% if form.email.errors %}
+                      {{ form.email(class="form-control form-control is-invalid",placeholder="Email",autocomplete="off")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.email.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control",placeholder="Email",autocomplete="off")}}
+                    {% endif %}
+                </div>
+
+                <!-- contacto -->
+                <div class="form-group">
+                    {{ form.contacto.label(class="form-control-label")}}
+                    
+                    {% if form.contacto.errors %}
+                      {{ form.contacto(class="form-control form-control is-invalid",placeholder="Contacto",autocomplete="off")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.contacto.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.contacto(class="form-control form-control",placeholder="Contacto",autocomplete="off")}}
+                    {% endif %}
+                </div>
+                
+                <!-- Adicionar -->
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-info")}}
+                    <button type="reset" id="btnCancelar" class="btn btn-danger hidden" style="margin-left: 5px;"> Cancelar</button>
+                </div>
+                
+        </form>
+
+            </div>
+        </section>
+    </div>
+    
+    <!-- Tabela de Entidades -->
+    <div class="col-md-8">
+        <section class="panel">
+          <header class="panel-heading">
+            Entidades Registadas
+        </header>
+
+        <div class="panel-body table-responsive" style="max-height:420px; overflow:auto">
+    
+            <table class="table table-hover" id="tbEntidades">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Contacto</th>
+                  <th>Projectos</th>
+                  <th>Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+          {% if result: %}
+             {% for dados in result.items%}
+                  <tr>
+                      <td>{{ dados.id }}</td>
+                      <td>{{ dados.nome }}</td>
+                      <td>{{ dados.email }}</td>
+                      <td>{{ dados.contacto }}</td>
+                      <td>{{ getLenght(dados.projectos) }}</td> 
+                     
+                      <td>
+                          <a onclick="PassarDados('/entidades/{{dados.id}}/update')"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
+                          <a onclick="fnIdselecionado('/entidades/{{dados.id}}/delete')" data-toggle="modal" data-target="#ModalConfirm"><button class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></a>
+                          <a href="/projectos/add?en={{dados.id}}"><button class="btn btn-default btn-xs"><i class="fa fa-plus-circle" title="Adicionar Projecto"></i></button></a>
+                      </td>
+                  </tr>
+              {% endfor %}
+          {% endif %}
+         </tbody>
+            </table>
+        </div>
+        </section>
+       <!-- Paginação -->
+    <div class="text-left" style="margin-top: -34px;">
+                <ul class="pagination">
+                    <li><a href="#">«</a></li>
+                {% for numPage in result.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2)%}
+                    {% if numPage %}
+                        {% if result.page == numPage %}
+                            <li><a style="background-color: #ccc;" href="{{ url_for('entidads.entidades', page=numPage) }}">{{ numPage }}</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('entidads.entidades', page=numPage) }}">{{ numPage }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                        <li><a href="#">»</a></li>
+                </ul>
+    </div>
+        
+    </div>
+
+    <!-- Modal -->
+    <div class="col-lg-4">
+        <div class="row">
+        <div class="col-md-4">
+            <section class="panel">
+                    <!-- ModalInformacao -->
+                    <div class="modal fade" id="ModalInformacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Informações Adicionais</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    Corpo do Modal
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ModalConfirm -->
+                    <div class="modal fade" id="ModalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" style="display: flex;">
+                            <div class="modal-content col-md-8" style="margin-left:20%; margin-top: 10%;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Atenção</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Estás prestes a eliminar este projecto, desejas continuar com a operação?
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-info" id="btnConfirm">Sim</a>
+                                    <button data-dismiss="modal" class="btn btn-default">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+{% block individualScript %} 
+<script src="../static/js/step/entidades.js"></script>
+{% endblock individualScript %}

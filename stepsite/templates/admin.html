@@ -1,0 +1,147 @@
+{% extends "layoutAdmin.html" %}
+{% block content %}
+
+<div class="row" style="margin-bottom:5px;">
+
+    <!-- Total de projectos -->
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-blue"><i class="fa fa-paperclip"></i></span>
+            <div class="sm-st-info">
+                <span id="totProjecto">{{gr_Projectos["total"]}}</span>
+                Total Projectos
+            </div>
+        </div>
+    </div>
+    <!-- projectos em produção -->
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-violet"><i class="fa fa-caret-square-o-left"></i></span>
+            <div class="sm-st-info">
+                <span id="producao">{{gr_Projectos["producao"]}}</span>
+                Projectos em produção
+            </div>
+        </div>
+    </div>
+    <!-- projectos Parados -->
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-red"><i class="fa fa-stop"></i></span>
+            <div class="sm-st-info">
+                <span id="parados">{{gr_Projectos["parados"]}}</span>
+                Projectos Parados
+            </div>
+        </div>
+    </div>
+    <!-- projectos concluidos -->
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-green"><i class="fa fa-check-square-o"></i></span>
+            <div class="sm-st-info">
+                <span id="concluidos">{{gr_Projectos["concluidos"]}}</span>
+                Projectos Concluidos
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main row -->
+<div class="row">
+
+    <div class="col-md-8">
+        <!--earning graph start-->
+        <section class="panel">
+            <header class="panel-heading">
+                Gráfico de Produtividade
+            </header>
+            <div class="panel-body">
+                <!-- <canvas id="linechart" width="600" height="330"></canvas> -->
+            <canvas id="chart-area" width="600" height="330"></canvas>
+            </div>
+        </section>
+         <!--earning graph end-->
+    </div>
+
+    <!-- Notificatições -->
+    <div class="col-lg-4">
+
+                    <!-- Notificatições -->
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Notificatições
+                        </header>
+                            <div class="panel-body" id="noti-box">
+                                {% if alert: %}
+                                {% for value in alert%}
+                                <div class="alert alert-{{value.categoria}}">
+                                    <button data-dismiss="alert" class="close close-sm" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <strong>Projecto {{value.projecto}}!</strong> {{value.titulo}}
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                    </section>
+  </div>
+</div>
+
+<script src="../static/js/Chart.min.js"></script>
+<script src="../static/js/utils.js"></script>
+
+<script>
+    var chartColors = window.chartColors;
+    var color = Chart.helpers.color;
+
+    var config = {
+        data: {
+            datasets: [{
+                data: [
+                    document.getElementById("parados").innerText,
+                    document.getElementById("producao").innerText,
+                    document.getElementById("concluidos").innerText,
+                    document.getElementById("totProjecto").innerText,
+                    ],
+                backgroundColor: [
+                    color(chartColors.red).alpha(0.5).rgbString(),
+                    color(chartColors.purple).alpha(0.5).rgbString(),
+                    color(chartColors.green).alpha(0.5).rgbString(),
+                    color(chartColors.blue).alpha(0.5).rgbString(),
+                ],
+                label: 'Projectos' // for legend
+            }],
+            labels: [
+                'Parados',
+                'Em Produção',
+                'Concluídos',
+                'Total'
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Projectos Registados'
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true
+                },
+                reverse: false
+            },
+            animation: {
+                animateRotate: false,
+                animateScale: true
+            }
+        }
+    };
+    
+    window.onload = function() {
+        var ctx = document.getElementById('chart-area').getContext("2d");
+        new Chart.PolarArea(ctx, config);
+    };
+</script>
+{% endblock content %}

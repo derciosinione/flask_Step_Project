@@ -1,0 +1,183 @@
+{% extends "layoutAdmin.html" %}
+
+{% block content %}
+                 
+<div class="row">
+    <div class="col-md-12">
+        <!--breadcrumbs start -->
+        <ul class="breadcrumb">
+            <li class="active">Menu de Projectos</li>
+        </ul>
+        <!--breadcrumbs end -->
+    </div>
+
+    <div class="col-md-12">
+     <!-- Mostrar Mensagens enviadas pelo Servidor -->
+     {% include 'message.html' %}
+    </div>
+
+    <!-- Pesquisar projectos -->
+    <div class="col-md-12">
+        <div class="box-tools m-b-15">
+            <form action="{{url_for('projects.projectos')}}" method="get">
+                <div class="box-tools m-b-15">
+                    <div class="input-group">
+                        <input type="text" name="search" value="{{search}}" class="form-control input-sm pull-right" autocomplete="off" style="width: 250px;" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
+
+<!-- Tabela de Projectos -->
+<div class="row">
+
+    <!-- Tabela de Projectos -->
+    <div class="col-md-12">
+        <section class="panel">
+          <header class="panel-heading">
+              Projectos
+        </header>
+
+        <div class="panel-body table-responsive" style="max-height:458px; overflow:auto">
+    
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Categoria</th>
+                  <th>Descrição</th>
+                  <th>Custos</th>
+                  <th>Data de entrega</th>
+                  <th>Estado</th>
+                  <th>Progresso</th>
+                  <th>Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+
+            {% if result: %}
+            {% for dados in result.items%}
+                 <tr>
+                     <td>{{ dados.id }}</td>
+                     <td>{{ dados.categoria.nome }}</td>
+                     <td>{{ dados.descricao }}</td>
+                     <td>{{ dados.custos }}</td>
+                     <td>{{ dados.dataEntrega }}</td> 
+
+                     <!-- Verificações de estado -->
+                     {% if dados.estado in ('parado') %}
+                     <td><span class="badge badge-danger">{{ dados.estado }}</span></td> 
+                     {% elif dados.estado in ('em produção') : %}
+                     <td><span class="badge badge-info">{{ dados.estado }}</span></td> 
+                     {% elif dados.estado in ('concluído') : %}
+                     <td><span class="badge badge-success">{{ dados.estado }}</span></td>
+                     {% else : %}
+                     <td><span class="badge badge-dark">{{ dados.estado }}</span></td> 
+                     {% endif %}
+                     
+                     <!-- Verificações de progresso -->
+                     {% if dados.progresso <= 30: %}
+                     <td><span class="badge badge-danger">{{ dados.progresso }}%</span></td> 
+                     {% elif dados.progresso > 30 and dados.progresso <= 60: %}
+                     <td><span class="badge badge-inverse">{{ dados.progresso }}%</span></td> 
+                     {% elif dados.progresso > 60 and dados.progresso < 100: %}
+                     <td><span class="badge badge-info">{{ dados.progresso }}%</span></td> 
+                     {% elif dados.progresso == 100: %}
+                     <td><span class="badge badge-success">{{ dados.progresso }}%</span></td> 
+                     {% endif %}
+                     
+                     <td>
+                         <!-- Editar -->
+                        <a href="/projectos/update?en={{dados.id}}"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
+                        <!-- Eliminar -->
+                        <a onclick="fnIdselecionado('/projectos/{{dados.id}}/delete')" data-toggle="modal" data-target="#ModalConfirm"><button class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></a>
+                        <!-- Detalhes -->
+                        <a onclick="fnAdicional(['{{dados.descricao}}','{{dados.categoria.nome}}','{{dados.entidade.nome}}','{{dados.estado}}','{{dados.dataConlusao}}','{{dados.dataEntrega}}'])" data-toggle="modal" data-target="#ModalInformacao"><button class="btn btn-default btn-xs"><i class="fa fa-info"></i></button></a>
+                    </td>
+                 </tr>
+             {% endfor %}
+         {% endif %}
+      </tbody>
+            </table>
+        </div>
+        </section>
+
+               <!-- Paginação -->
+    <div class="text-left" style="margin-top: -34px;">
+        <ul class="pagination">
+            <li><a href="#">«</a></li>
+        {% for numPage in result.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2)%}
+            {% if numPage %}
+                {% if result.page == numPage %}
+                    <li><a style="background-color: #ccc;" href="{{ url_for('projects.projectos', page=numPage) }}">{{ numPage }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('projects.projectos', page=numPage) }}">{{ numPage }}</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+                <li><a href="#">»</a></li>
+        </ul>
+</div>
+    </div>
+
+    <!-- Modal -->
+    <div class="col-md-2">
+        <div class="row">
+        <div class="col-md-2">
+            <section class="panel">
+
+                    <!-- ModalInformacao -->
+                    <div class="modal fade" id="ModalInformacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" style="display: flex;">
+                            <div class="modal-content col-md-8" style="margin-left:20%; margin-top: 10%;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Informações adicionais</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- <span></span> -->
+                                    {% if result: %}
+                                    <div id="divModal"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ModalConfirm -->
+                    <div class="modal fade" id="ModalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" style="display: flex;">
+                            <div class="modal-content col-md-8" style="margin-left:20%; margin-top: 10%;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Atenção</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Estás prestes a eliminar este projecto, desejas continuar com a operação?
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-danger" id="btnConfirm">Sim</a>
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% block individualScript %} 
+<script src="../static/js/step/projectos.js"></script>
+{% endblock individualScript %}
+
+{% endblock content %}

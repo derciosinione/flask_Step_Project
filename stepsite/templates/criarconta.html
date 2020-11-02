@@ -1,0 +1,99 @@
+{% extends "layoutHead.html" %}
+
+{% block content %}
+
+    <nav class="navbar nav-login">
+        <a href="{{url_for('main.home')}}">Step</a>
+    </nav>
+
+    <br> <br>
+    
+    <div class="caixa-login">
+        <div class="col-md-3 subcaixa">
+        <!-- formulário de criação de conta -->
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+            <br>
+                <div class="form-group caixaUser">
+                    <div>
+                        <i class="fa fa-user"></i>
+                    </div>
+                </div>
+
+                               <!-- username -->
+                <div class="form-group">
+                    
+                    {% if form.username.errors %}
+                      {{ form.username(class="form-control form-control-sm is-invalid",placeholder="Nome de usuário",autocomplete="off")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.username.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-sm",placeholder="Nome de usuário",autocomplete="off")}}
+                    {% endif %}
+                </div>
+
+                <!-- email -->
+                <div class="form-group">
+                    
+                    {% if form.email.errors %}
+                      {{ form.email(class="form-control form-control-sm is-invalid",placeholder="Email",autocomplete="off")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.email.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-sm",placeholder="Email",autocomplete="off")}}
+                    {% endif %}
+                </div>
+
+                <!-- password -->
+                <div class="form-group">
+    
+                    {% if form.password.errors %}
+                      {{ form.password(class="form-control form-control-sm is-invalid",placeholder="Senha")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.password.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-sm",placeholder="Senha")}}
+                    {% endif %}
+                </div>
+
+                <!-- confirmar password -->
+                <div class="form-group">
+
+                    {% if form.confirm_password.errors %}
+                      {{ form.confirm_password(class="form-control form-control-sm is-invalid",placeholder="Confirmar senha")}}
+                    <div class="invalid-feedback">
+                            {% for erro in form.confirm_password.errors %}
+                                <span>{{ erro }}</span>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-sm",placeholder="Confirmar senha")}}
+                    {% endif %}
+                </div>
+
+                <!-- Mensagem de erro -->
+                {% include 'message.html' %}
+                
+                <!-- Registar-se -->
+                <div class="form-group">
+                    {{ form.submit(class="btn dsBtn-2",style="width: 100%;")}}                     
+                </div>
+                
+                <!-- Link para Login -->
+                <small class="text-muted ml-2">Já possui uma conta? <a href="{{ url_for('users.login')}}">Entre</a> agora.</small>
+
+            </fieldset>
+        </form>
+        </div>
+    </div>
+{% endblock content %}

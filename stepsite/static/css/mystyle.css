@@ -1,0 +1,129 @@
+/* html,
+body {
+user-select: none;
+} */
+
+
+
+/* login */
+.caixaUser{
+display: flex;
+justify-content: center;
+color: #283744;
+font-size: 50px;
+}
+
+.caixaUser div{
+  border: 2px solid #788896;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  border-radius: 40px;
+
+}
+
+.caixa-login{
+  display: flex;
+  justify-content: center;
+}
+
+.caixa-login .subcaixa{
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #788896;
+  box-shadow: 2px 4px 2px 2px #7888968c;
+}
+
+.nav-login{
+  background-color: #283744;
+  color: #ccc;
+  font-size: 15pt;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.nav-login a{
+  color: #ccc;
+  text-decoration: none;
+}
+
+
+/* 283744 */
+
+.dsBtn-1{
+    background-color: white; 
+    color: #283744;
+    border: 1px solid #283744;
+}
+
+.dsBtn-1:hover{
+    background-color: #283744; 
+    color: white;
+}
+
+.dsBtn-2{
+  background-color: #1d2b36; 
+  color: white;
+}
+
+.dsBtn-2:hover{
+  background-color: #283744; 
+  color: white;
+}
+
+
+
+.dsSection{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+
+.dsSection .dsSectionItem{
+    background-color: red;
+    width: 100px;
+}
+
+.colorred{
+    color: red;
+}
+
+.colorgreen{
+    color: rgb(20, 194, 20);
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+  
+  .was-validated .form-control:invalid, .form-control.is-invalid, .was-validated
+  .custom-select:invalid,
+  .custom-select.is-invalid {
+    border-color: #dc3545;
+  }
+  
+  .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated
+  .custom-select:invalid:focus,
+  .custom-select.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+  
+  .was-validated .form-control:invalid ~ .invalid-feedback,
+  .was-validated .form-control:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback,
+  .form-control.is-invalid ~ .invalid-tooltip, .was-validated
+  .custom-select:invalid ~ .invalid-feedback,
+  .was-validated
+  .custom-select:invalid ~ .invalid-tooltip,
+  .custom-select.is-invalid ~ .invalid-feedback,
+  .custom-select.is-invalid ~ .invalid-tooltip {
+    display: block;
+    font-size: 10pt;
+  }
+  
+  

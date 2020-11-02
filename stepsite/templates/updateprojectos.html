@@ -1,0 +1,271 @@
+{% extends "layoutAdmin.html" %}
+
+{% block content %}
+                 
+<div class="row">
+    <div class="col-md-12">
+        <!--breadcrumbs start -->
+        <ul class="breadcrumb">
+            <li class="active">Actualizar Projecto</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+    <!-- Mostrar Mensagens enviadas pelo Servidor -->
+    {% include 'message.html' %}
+   </div>
+
+<section class="row">
+    <!-- Formulario --> 
+    <div class="col-lg-7">
+        <section class="panel">
+            <header class="panel-heading">
+                Formulário
+            </header>
+            <div class="panel-body">
+                <form role="form" name="formProjectos" method="POST" action="{{url_for('projects.updateprojecto')}}">
+                {{ form.hidden_tag() }}
+
+                <!-- Id do projecto -->
+                <div class="form-group hidden">
+                    {{ form.idProjecto(class="form-control form-control hidden",placeholder="Id do Projecto",readonly="true")}}
+                </div>
+
+                    <!-- Id da categoria -->
+                    <div class="form-group hidden">
+                        {{ form.idCategoria(class="form-control form-control hidden",placeholder="Id da Categoria",readonly="true")}}
+                    </div>
+
+                    <!-- Categoria -->
+                    <div class="form-group">
+                        {{ form.categoria.label(class="form-control-label")}}
+                        
+                        {% if form.categoria.errors %}
+                          {{ form.categoria(class="form-control form-control is-invalid",placeholder="Categoria",style="background-color: white;",readonly="true",autocomplete="off")}}
+                        <div class="invalid-feedback">
+                                {% for erro in form.categoria.errors %}
+                                    <span>{{ erro }}</span>
+                                {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.categoria(class="form-control form-control",placeholder="Categoria",readonly="True",style="background-color: white;",autocomplete="off")}}
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Descrição -->
+                    <div class="form-group">
+                        {{ form.descricao.label(class="form-control-label")}}
+                        
+                        {% if form.descricao.errors %}
+                          {{ form.descricao(class="form-control form-control is-invalid",placeholder="Descrição",autocomplete="off")}}
+                        <div class="invalid-feedback">
+                                {% for erro in form.descricao.errors %}
+                                    <span>{{ erro }}</span>
+                                {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.descricao(class="form-control form-control",placeholder="Descrição",autocomplete="off")}}
+                        {% endif %}
+                    </div>
+
+                    <!-- custos -->
+                    <div class="form-group">
+                        <label for="">Custos</label>
+                       
+                       {% if form.custos.errors %}
+                       <input type="number" class="form-control form-control is-invalid" value="{{form.custos.data}}" name="custos" placeholder="Custos" autocomplete="off">
+                     <div class="invalid-feedback">
+                             {% for erro in form.custos.errors %}
+                                 <span>{{ erro }}</span>
+                             {% endfor %}
+                     </div>
+                     {% else %}
+                         <input type="number" class="form-control form-control" value="{{form.custos.data}}" name="custos" placeholder="Custos" autocomplete="off">
+                     {% endif %}
+                       
+                    </div>
+
+                    <!-- Estado -->
+                    <div class="form-group">
+                        <label for="selectestado">Estado</label>
+                        <select class="form-control m-b-10" name="estado" id="selectestado">
+                            <option  value="parado">parado</option>
+                            <option value="em produção">em produção</option>
+                            <option value="concluído">concluído</option>
+                        </select>
+                     </div>
+
+                    <!-- Progresso -->
+                    <div class="form-group">
+                        <label for="">Progresso</label>
+
+                        {% if form.progresso.errors %}
+                        <input type="number" maxlength="100" class="form-control form-control is-invalid" value="{{form.progresso.data}}" name="progresso" placeholder="Progresso" autocomplete="off">
+                      <div class="invalid-feedback">
+                              {% for erro in form.progresso.errors %}
+                                  <span>{{ erro }}</span>
+                              {% endfor %}
+                      </div>
+                      {% else %}
+                          <input type="number" maxlength="100" class="form-control form-control" value="{{form.progresso.data}}" name="progresso" placeholder="Progresso" autocomplete="off">
+                      {% endif %}
+                     </div>
+                    
+                    <!-- Id da Entidade -->
+                    <div class="form-group hidden">
+                        {{ form.idEntidade(class="form-control form-control",placeholder="Id da Entidade",readonly="true")}}
+                    </div>
+                    
+                    <!-- Entidade -->
+                    <div class="form-group">
+                        {{ form.entidade.label(class="form-control-label")}}
+                        
+                        {% if form.entidade.errors %}
+                          {{ form.entidade(class="form-control form-control is-invalid",placeholder="Entidade",style="background-color: white;",readonly="true",autocomplete="off")}}
+                        <div class="invalid-feedback">
+                                {% for erro in form.entidade.errors %}
+                                    <span>{{ erro }}</span>
+                                {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.entidade(class="form-control form-control",placeholder="Entidade",readonly="True",style="background-color: white;",autocomplete="off")}}
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Data de entrega -->
+                    <div class="form-group">
+                        <label for="dataEntrega">Data de Entrega</label>
+                        
+                        {% if form.dataEntrega.errors %}
+                            <input type="date" value="{{form.dataEntrega.data}}" name="dataEntrega"  class="form-control form-control is-invalid" id="dataEntrega" placeholder="Data de Entrega">
+                         <div class="invalid-feedback">
+                              {% for erro in form.dataEntrega.errors %}
+                                  <span>{{ erro }}</span>
+                              {% endfor %}
+                      </div>
+                      {% else %}
+                          <input type="date" value="{{form.dataEntrega.data}}" name="dataEntrega"  class="form-control form-control" id="dataEntrega" placeholder="Data de Entrega">
+                      {% endif %}
+                        
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary",value="Actualizar")}}
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- lista de categorias -->
+    <div class="col-md-5">
+    <section class="panel tasks-widget">
+        <header class="panel-heading">
+            Lista de Categorias
+      </header>
+      <div class="panel-body">
+
+        <div class="task-content">
+            <ul class="task-list ui-sortable" id="listaCategorias">
+            {% if result: %}
+                {% for item in result.items %}
+                    <li>
+                        <span> {{ item.nome }}</span>
+                        <div class="pull-right hidden-phone">
+                            <a onclick="SelectCategoria('{{item.id}}','{{item.nome}}')"><button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button></a>
+                            <a  onclick="AcaoCategoria('/categoria/{{item.id}}/update','Actualizar','{{item.nome}}')" href="#ModalCategoria" data-toggle="modal" data-target="#ModalCategoria"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
+                            <a href="#ModalConfirm" onclick="fnIdselecionado('/categoria/{{item.id}}/delete?en={{en}}&page={{curpage}}&ops=update')" data-toggle="modal" data-target="#ModalConfirm"><button class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% endif %}
+            </ul>
+        </div>
+            <div class="row">
+                <div class="col-md-3">
+                <a onclick="AcaoCategoria('/categoria','Adicionar',null)" class="btn btn-info btn-sm pull-left" href="#ModalCategoria" data-toggle="modal">Add Categoria</a>
+                </div>
+                <!-- Paginação -->
+                <div class="col-md-9 text-right">
+                    <ul class="pagination" style="margin-top: 0px; margin-bottom: 0px;">
+                        <li><a href="#">«</a></li>
+                    {% for numPage in result.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2)%}
+                        {% if numPage %}
+                            {% if result.page == numPage %}
+                                <li><a style="background-color: #ccc;" href="/projectos/update?en={{en}}&page={{numPage}}">{{ numPage }}</a></li>
+                            {% else %}
+                                <li><a href="/projectos/update?en={{en}}&page={{numPage}}">{{ numPage }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
+            </div>
+</section>       
+    </div>
+</section>
+
+<!-- Modal -->
+ <section class="">
+    <!-- Add Categoria -->
+    <div class="modal fade" id="ModalCategoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" style="display: flex; justify-content: center;">
+            <div class="modal-content col-md-8">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Categorias</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <!-- Formulario Add Categoria -->
+                       <form role="form" id="formCategoria" method="POST" >
+                            <div class="form-group">
+                                <div id="caixa" class="alert">
+                                    <i id="closeAlert" class="fa fa-times float-right" style="cursor: pointer;"></i>
+                                    <p id="CaixaMsg"></p>
+                                </div>
+                                <label for="txtcategoria">Categoria</label>
+                                <input type="text" required minlength="3" maxlength="20" class="form-control" id="txtcategoria" name="categoria" placeholder="Categoria" autocomplete="off">
+                            </div>
+                           <button id="btnSendCategoria" class="btn btn-primary">Adicionar</button>
+                        </form>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- ModalConfirm -->
+    <div class="modal fade" id="ModalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" style="display: flex;">
+            <div class="modal-content col-md-8" style="margin-left:20%; margin-top: 10%;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Atenção</h4>
+                </div>
+                <div class="modal-body">
+                    Estás prestes a eliminar esta categoria, desejas continuar com a operação?
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-danger" id="btnConfirm">Sim</a>
+                    <button data-dismiss="modal" class="btn btn-default">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+    
+
+{% block individualScript %} 
+<script src="../static/js/step/projectos.js"></script>
+{% endblock individualScript %}
+
+{% endblock content %}

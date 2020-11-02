@@ -1,0 +1,10 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="container alert alert-{{ category }}" style="font-size: 14px; width: auto;">
+            <i data-dismiss="alert" class="fa fa-times float-right"  style="cursor: pointer;"></i>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}

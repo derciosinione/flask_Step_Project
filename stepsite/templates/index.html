@@ -1,0 +1,205 @@
+{% extends "layoutHead.html" %}
+
+{% block content %}
+
+        <!-- Barra de navegação -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand mb-0" href="#">
+                <img src="../static/img/stepLogo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                STEP
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Central de Ajuda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Trabalho remoto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Fale conosco</a></li>
+                </ul>
+              <span class="navbar-text">
+                <a href="{{ url_for('users.login')}}"><button class="btn btn-danger">Entrar</button></a>
+              </span> 
+            </div>
+        </nav>
+    
+        <main>
+
+          <br><br> <br> <br> <br>
+    
+              <div class="card bg-dark text-white">
+                <img class="card-img" src="../static/img/simple_gray-design_HD_wallpaper_1366x768.jpg" alt="Imagem do card">
+                <div class="card-img-overlay">
+                  <h2 class="card-title text-center ">Realize muito mais com menos</h2>
+                  <p class="card-text text text-center"> A Step é uma ferramenta inteligente que simplifica e agiliza o dia a dia da sua equipe.
+                    São incontáveis os benefícios que disponibilizamos para seu time ganhar tempo e aumentar a produtividade. </p>
+                </div>
+              </div>
+              <br> <br> 
+              <div class="container text-center">
+                <h1>Solução para gestão de todos os projetos</h1>
+             <br><br>
+            
+             <div class="row">
+                <div class="col-sm-4">
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title"><img src="../static/img/light_on_50px.png " alt=""></h5>
+                      <p class="card-text"> Eventos</p>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title"><img src="../static/img/design_50px.png" alt=""></h5>
+                      <p class="card-text">Design</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title"><img src="../static/img/study_50px.png" alt=""></h5>
+                      <p class="card-text">Estudos</p>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title"><img src="../static/img/firework_explosion_50px.png" alt=""></h5>
+                      <p class="card-text">Comemoração</p>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title"><img src="../static/img/handshake_50px.png" alt=""></h5>
+                      <p class="card-text">Vendas</p>
+                    </div>
+                  </div>
+                </div>
+      
+    
+                <div class="col-sm-4 text-center">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><img src="../static/img/charity_50px.png" alt=""></h5>
+                      <p class="card-text">Suporte</p>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <br>
+            <div class="container text-center">
+              <h1>A melhor forma de organizar e gerenciar projetos!</h1>
+              <p>Com a facilidade de gerenciar projetos sua equipe será ainda mais pontual, organizada e produtiva. Uma gestão de projetos eficiente alcança metas e objetivos com muito mais rapidez e garante resultados mais assertivos dentro dos recursos estimados, a curto, médio e longo prazo. É a oportunidade do seu negócio se destacar dos demais e sua organização ser impulsionada para o sucesso. Sua equipe faz muito mais com menos!</p>
+            </div>
+        </main>
+      
+        <br><br>
+        <footer class="page-footer font-small stylish-color-dark pt-4" style="background-color:#333333;">
+      
+          <!-- Footer Links -->
+          <div class="container text-center text-md-left">
+        
+            
+            <div class="row">
+        
+              <div class="col-md-4 mx-auto">
+        
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4  text-white" ><img src="../static/img/stepLogo.png"> Step</h5>
+                <p class=" text-white">A  Step ajuda os projetos a serem mais eficientes, produtivas e organizadas</p>
+        
+              </div>
+        
+              <hr class="clearfix w-100 d-md-none">
+        
+              <div class="col-md-2 mx-auto">         
+        <br><br>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!" class="text-white">Central de Ajuda</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Sobre</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Trabalho remoto</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Fale conosco</a>
+                  </li>
+                </ul>
+        
+              </div>
+            
+            </div>
+          
+        
+          </div>
+    
+          <!-- Social buttons -->
+          <ul class="list-unstyled list-inline text-center ">
+            <li class="list-inline-item">
+              <a class="btn-floating btn-fb mx-1">
+                <i class="fab fa-facebook-f"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-tw mx-1">
+                <i class="fab fa-twitter"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-gplus mx-1">
+                <i class="fab fa-google-plus-g"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-li mx-1">
+                <i class="fab fa-linkedin-in"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-dribbble mx-1">
+                <i class="fab fa-dribbble"> </i>
+              </a>
+            </li>
+          </ul>
+      
+            <div class="col-md-6 col-lg-10 text-center text-md-right">
+              <h6 class="mb-0 text-md-left text-white">© 2020</h6>
+              <!-- Facebook -->
+              <a class="fb-ic">
+                <i href="#!"> <img src="../static/img/facebook_old_50px.png" alt=""> </i>
+              </a>
+              <!-- Twitter -->
+              <a class="fb-ic">
+                <i href="#!"> <img src="../static/img/twitter_50px.png" alt=""> </i>
+              </a>
+              <!--Linkedin -->
+              <a class="fb-ic">
+                <i href="#!"> <img src="../static/img/linkedin_50px.png" alt=""> </i>
+              </a>
+              <!--Instagram-->
+              <a class="fb-ic">
+                <i href="#!"> <img src="../static/img/instagram_old_50px.png" alt=""> </i>
+              </a>
+            </div> 
+          </div>
+        </footer>
+        
+    
+    {% endblock content %}
