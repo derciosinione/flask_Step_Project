@@ -23,7 +23,7 @@ class Usuarios(db.Model,UserMixin):
 # # # # Model de Categorias # # # #
 class Categorias(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    nome = db.Column(db.String(50), unique=True, nullable=False)
+    nome = db.Column(db.String(50), nullable=False)
     idUser = db.Column(db.Integer, db.ForeignKey('usuarios.id'),nullable=False)    
     projectos = db.relationship('Projectos', backref='categorias', lazy=True)
     
@@ -45,7 +45,7 @@ class Notificacoes(db.Model):
 # # # # Model de Entidades # # # #
 class Entidades(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    nome = db.Column(db.String(50), unique=True, nullable=False)
+    nome = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     contacto = db.Column(db.String(20), nullable=False)
     imagem = db.Column(db.String(50), nullable=False, default='defaultEntidade.jpg')
@@ -73,4 +73,3 @@ class Projectos(db.Model):
     
     def __repr__(self):
         return f"Projecto('{self.descricao}','{self.estado}','{self.progresso}','{self.dataEntrega}')"
-

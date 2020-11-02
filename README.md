@@ -4,41 +4,24 @@
 
 Pretende-se ter uma agenda que guardará informações relacionadas a cada projecto a ser desenvolvido, e uma área de lembretes informando os projetos em atraso. 
 
-# Logo precisaremos das seguintes informações:
+## Logo precisaremos das seguintes informações:
 
-# Tipo de projecto
+## Tipo de projecto
 <ul>
 <li>Descrição do projecto</li>
 
 <li>
 Entidade do projecto (informará a relação do projecto com uma determinada entidade, podendo ser um cliente ou uma disciplina relacionado com um professor)
 </li>
-
-<li>
-Custo
-</li>
-
-<li>
-Estado do projecto (‘concluído’, ‘em produção’,’prado’)
-</li>
-
-<li>
-Data para concluir ( informa a data de limite para concluir um projecto)
-</li>
-
-<li>
-Data de registo 
-</li>
-
-<li>
-Data de conclusão 
-</li>
-
-<li>
-Dias de trabalho ( informa os dias que tens de trabalhar em cada projecto )
-</li>
+<li>Custo</li>
+<li>Estado do projecto (‘concluído’, ‘em produção’,’prado’)</li>
+<li>Data para concluir ( informa a data de limite para concluir um projecto)</li>
+<li>Data de registo </li>
+<li>Data de conclusão </li>
+<li>Dias de trabalho ( informa os dias que tens de trabalhar em cada projecto )</li>
 </ul>
 
+# Normalização
 ## Tabelas necessárias:
 <ul>
 <li>Usuário</li>
@@ -48,10 +31,7 @@ Dias de trabalho ( informa os dias que tens de trabalhar em cada projecto )
 <li>Projectos </li>
 </ul>
 
-## Normalização
-
 ### Usuário 
-
 <ul>
 <li>Id int</li>
 <li>Nome string</li>
@@ -80,48 +60,21 @@ Dias de trabalho ( informa os dias que tens de trabalhar em cada projecto )
 
 ## Projectos
 <ul>
-
-<li>
-Id int,
-</li>
-
-<li>
-IdTipoProjeto int,
-</li>
-
-<li>
-Descricao string,
-</li>
-
-<li>
-Custos int,
-</li>
-
-<li>
-Estado (‘concluído’, ‘em produção’,’prado’)
-</li>
-<li>
-DataEntrega date, 
-</li>
-<li>
-DataRegisto date,
-</li>
-<li>
-DataConclusao date,
-</li>
-<li>
-IdUsuario int,
-</li>
-<li>
-IdEntidade int
-</li>
+<li>Id int</li>
+<li>IdTipoProjeto int</li>
+<li>Descricao string</li>
+<li>Custos int</li>
+<li>Estado (‘concluído’, ‘em produção’,’prado’</li>
+<li>DataEntrega date</li>
+<li>DataRegisto date</li>
+<li>DataConclusao date</li>
+<li>IdUsuario int</li>
+<li>IdEntidade int</li>
 </ul>
-
 
 
 ## Dias de trabalho
 <ul>
-
 <li>Id int</li>
 <li>IdProjecto int</li>
 <li>Dia string</li>
