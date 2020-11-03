@@ -103,10 +103,19 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 ## Pacotes Python necessários:
 <ul>
     <li>flask</li>
+    <li>flask_sqlalchemy</li>
     <li>Pillow</li>
     <li></li>
 </ul>  
 
+## Usage
+    <h3>Para rodar este projecto siga os sehuintes passos:</h3>
+
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py runserver
+    
+    In your web browser enter the address : http://localhost:8000 or http://127.0.0.1:8000/
 
 # Support :
 Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
