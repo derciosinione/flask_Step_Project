@@ -37,6 +37,7 @@ def projectos():
                 
     return render_template("projectos.html",title="STEP | Projectos",result=result,search=search)
 
+
 # # # # Rota de Projectos / ADD # # # #
 @projects.route("/projectos/add",methods=['GET','POST'])
 @login_required
@@ -73,7 +74,7 @@ def addprojectos():
             if vf is None: 
                 flash('Projecto adicionado com sucesso','success')
                 # Criar Notificacoes
-                titulo_not = f"<strong>Novo Projecto!</strong> Foi adicionado recentemente o projecto {form.descricao.data}."
+                titulo_not = f"Novo Projecto! Foi adicionado recentemente o projecto {form.descricao.data}."
                 create_notificacao = Notificacoes(titulo=titulo_not,categoria='info',projecto=form.descricao.data,idUser=current_user.id)
                 db.session.add(create_notificacao)
                 db.session.commit()
@@ -134,7 +135,7 @@ def updateprojecto():
         titulo_not = None 
         if(projecto.estado=="concluído"):
             projecto.dataConclusao = datetime.utcnow()
-            titulo_not = f"<strong>Well done!</strong> Projecto {form.descricao.data} concluído com sucesso."
+            titulo_not = f"Well done! Projecto {form.descricao.data} concluído com sucesso."
             create_notificacao = Notificacoes(titulo=titulo_not,categoria='success',projecto=form.descricao.data,idUser=current_user.id)
             db.session.add(create_notificacao)
         else:

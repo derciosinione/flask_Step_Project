@@ -101,23 +101,22 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 </ul>
 
 ## Pacotes Python necessários:
-<ul>
-    <li>flask</li>
-    <li>flask_sqlalchemy</li>
-    <li>Pillow</li>
-    <li></li>
-</ul>  
+    flask
+    flask-sqlalchemy
+    flask-Login
+    flask-wtf
+    email-validator
+    Pillow 
 
 ## Usage
-    <h3>Para rodar este projecto siga os sehuintes passos:</h3>
+    Para rodar este projecto siga os seguintes passos:
 
-    python manage.py migrate
-    python manage.py createsuperuser
-    python manage.py runserver
+    Abra o cmd/terminal e execute o comando:
+        python run.py
     
-    In your web browser enter the address : http://localhost:8000 or http://127.0.0.1:8000/
+    no teu navegador acesse este endereço : http://localhost:5000 or http://127.0.0.1:5000/
 
-# Support :
+# Suporte :
 Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
 
 <ul>
