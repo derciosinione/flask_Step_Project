@@ -128,6 +128,20 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 # Suporte :
 Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
 
+# Screenshots : 
+<img src="Screenshots/1.png" height="400" width="800">
+<img src="Screenshots/2.png" height="400" width="800">
+<img src="Screenshots/4.png" height="400" width="800">
+<img src="Screenshots/5.png" height="400" width="800">
+<img src="Screenshots/6.png" height="400" width="800">
+<img src="Screenshots/7.png" height="400" width="800">
+<img src="Screenshots/8.png" height="400" width="800">
+<img src="Screenshots/9.png" height="400" width="800">
+<img src="Screenshots/10.png" height="400" width="800">
+<img src="Screenshots/11.png" height="400" width="800">
+<img src="Screenshots/12.png" height="400" width="800">
+<img src="Screenshots/13.png" height="400" width="800">
+
 <ul>
     <li><a href="https://www.paypal.me/derciosinione"><b>PayPal</b></a></li>
 </ul>
