@@ -1,8 +1,8 @@
 # Sistema de gestão de projetos
 
-## Objetivo: Automatizar o processo de gerenciamento de projetos. 
+## Objetivo: Automatizar o processo de controle e gerenciamento de projetos. 
 
-Pretende-se ter uma agenda que guardará informações relacionadas a cada projecto a ser desenvolvido, e uma área de lembretes informando os projetos em atraso. 
+Pretende-se ter uma agenda que permitirá fazer o controle de fluxo de projectos a serem desenvolvidos, actualizar o estado e progresso do projecto. 
 
 ## Logo precisaremos das seguintes informações:
 
@@ -115,6 +115,14 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
         python run.py
     
     no teu navegador acesse este endereço : http://localhost:5000 or http://127.0.0.1:5000/
+
+## Funcionamento
+<ol>
+<li>Criar uma conta</li>
+<li>Fazer Login</li>
+<li>Criar Entidades</li>
+<li>Adicionar projecto a uma determinada entidade</li>
+</ol>
 
 # Suporte :
 Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
