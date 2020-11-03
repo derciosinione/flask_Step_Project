@@ -130,7 +130,6 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 
 # Screenshots : 
 <img src="Screenshots/1.png" height="400" width="800">
-<img src="Screenshots/2.png" height="400" width="800">
 <img src="Screenshots/4.png" height="400" width="800">
 <img src="Screenshots/5.png" height="400" width="800">
 <img src="Screenshots/6.png" height="400" width="800">
