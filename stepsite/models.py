@@ -39,7 +39,7 @@ class Notificacoes(db.Model):
     idUser = db.Column(db.Integer, db.ForeignKey('usuarios.id'),nullable=False)    
     
     def __repr__(self):
-        return f"Notificacoes('{self.titulo}','{self.idUser}')"
+        return f"Notificações('{self.titulo}','{self.idUser}')"
 
     
 # # # # Model de Entidades # # # #
