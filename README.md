@@ -21,6 +21,7 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 <li>Dias de trabalho ( informa os dias que tens de trabalhar em cada projecto )</li>
 </ul>
 
+
 # Normalização
 ## Tabelas necessárias:
 <ul>

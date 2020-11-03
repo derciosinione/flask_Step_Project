@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, jsonify, Blueprint
+from flask import render_template, redirect, flash, request, jsonify, Blueprint
 from stepsite import db
 from stepsite.models import Categorias
 from flask_login import current_user, login_required
@@ -49,6 +49,11 @@ def deletecategoria(id):
     ops = request.args.get('ops','add', type=str)
     
     result = Categorias.query.get_or_404(id)
+
+    if(len(result.projectos) > 0):
+        flash(f'Categoria {result.nome} tem projectos relacionados no sistema, razão pela qual não foi possível eliminar.','danger')
+        return redirect(f'/projectos/{ops}?en={en}&page={page}')
+
     db.session.delete(result)
     db.session.commit()
     return redirect(f'/projectos/{ops}?en={en}&page={page}')

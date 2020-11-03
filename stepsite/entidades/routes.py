@@ -67,7 +67,7 @@ def updeteEntidade(id):
 def deleteEntidade(id):
     result = Entidades.query.get_or_404(id)
     if(len(result.projectos) > 0):
-        flash('Esta entidade tem projectos no sistema, razão pela qual não foi possível elimina-lo.','danger')
+        flash(f'Entidade {result.nome} tem projectos no sistema, razão pela qual não foi possível elimina-lo.','danger')
         return redirect(url_for('entidads.entidades'))
         
     db.session.delete(result)
