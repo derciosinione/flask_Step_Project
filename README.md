@@ -83,6 +83,9 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 </ul>
 
 
+## Modelo Entidade Relacionamento
+<img src="Modelagem/MER/MER.png" height="400" width="800">
+
 ## Gráfico de produtividade*
 <p>Pretende-se apresentar gráficos com as segintes característica:</p>
 
