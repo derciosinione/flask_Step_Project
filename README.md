@@ -128,9 +128,6 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 <li>Adicionar projecto a uma determinada entidade</li>
 </ol>
 
-# Suporte :
-Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
-
 # Screenshots : 
 <img src="Screenshots/1.png" height="400" width="800">
 <img src="Screenshots/2.png" height="400" width="800">
@@ -144,6 +141,9 @@ Se achaste este projecto interessante ou aprendeste alguma coisa e queres agrada
 <img src="Screenshots/11.png" height="400" width="800">
 <img src="Screenshots/12.png" height="400" width="800">
 <img src="Screenshots/13.png" height="400" width="800">
+
+# Suporte :
+Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
 
 <ul>
     <li><a href="https://www.paypal.me/derciosinione"><b>PayPal</b></a></li>
