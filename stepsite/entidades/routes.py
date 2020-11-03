@@ -59,6 +59,7 @@ def updeteEntidade(id):
     else:
         flash('Houve um erro ao actualizar a entidade, Tente mais tarde.','danger')
         return redirect(url_for('entidads.entidades'))
+
         
 # # # # Rota de Remover Entidade # # # #
 @entidads.route("/entidades/<int:id>/delete")

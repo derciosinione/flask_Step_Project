@@ -1,9 +1,9 @@
 from flask import render_template, redirect, request, jsonify, Blueprint
 from stepsite import db
 from stepsite.models import Categorias
+from flask_login import current_user, login_required
 
 category = Blueprint('category', __name__)
-idUsuario=1
 
 # # # # Rota de Add categorias # # # #
 @category.route("/categoria",methods=['GET','POST'])
@@ -13,7 +13,7 @@ def addcategoria():
     if request.method == 'POST':
         nome = request.form['categoria']
         try:
-            categoria = Categorias(nome=nome,idUser=idUsuario)
+            categoria = Categorias(nome=nome,idUser=current_user.id)
             db.session.add(categoria)
             # # # Enviar os dados na base de dados
             db.session.commit()
