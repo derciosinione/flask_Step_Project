@@ -65,7 +65,7 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 <li>IdTipoProjeto int</li>
 <li>Descricao string</li>
 <li>Custos int</li>
-<li>Estado (‘concluído’, ‘em produção’,’prado’</li>
+<li>Estado (‘concluído’, ‘em produção’,’prado’)</li>
 <li>DataEntrega date</li>
 <li>DataRegisto date</li>
 <li>DataConclusao date</li>
@@ -84,7 +84,8 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 
 
 ## Modelo Entidade Relacionamento
-<img src="Modelagem/MER/MER.png" height="400" width="800">
+![Png](Modelagem/MER/MER.png)
+
 
 ## Gráfico de produtividade*
 <p>Pretende-se apresentar gráficos com as segintes característica:</p>
@@ -129,18 +130,19 @@ Entidade do projecto (informará a relação do projecto com uma determinada ent
 </ol>
 
 # Screenshots : 
-<img src="Screenshots/1.png" height="400" width="800">
-<img src="Screenshots/2.png" height="400" width="800">
-<img src="Screenshots/4.png" height="400" width="800">
-<img src="Screenshots/5.png" height="400" width="800">
-<img src="Screenshots/6.png" height="400" width="800">
-<img src="Screenshots/7.png" height="400" width="800">
-<img src="Screenshots/8.png" height="400" width="800">
-<img src="Screenshots/9.png" height="400" width="800">
-<img src="Screenshots/10.png" height="400" width="800">
-<img src="Screenshots/11.png" height="400" width="800">
-<img src="Screenshots/12.png" height="400" width="800">
-<img src="Screenshots/13.png" height="400" width="800">
+![Png](Screenshots/1.png)
+![Png](Screenshots/3.png)
+![Png](Screenshots/4.png)
+![Png](Screenshots/5.png)
+![Png](Screenshots/6.png)
+![Png](Screenshots/7.png)
+![Png](Screenshots/8.png)
+![Png](Screenshots/9.png)
+![Png](Screenshots/10.png)
+![Png](Screenshots/11.png)
+![Png](Screenshots/12.png)
+![Png](Screenshots/13.png)
+
 
 # Suporte :
 Se achaste este projecto interessante ou aprendeste alguma coisa e queres agradacer-me, considera em ajudar-ne a pagar a minha conta da internet. Isso me motivará a criar mais projectos.
@@ -148,3 +150,14 @@ Se achaste este projecto interessante ou aprendeste alguma coisa e queres agrada
 <ul>
     <li><a href="https://www.paypal.me/derciosinione"><b>PayPal</b></a></li>
 </ul>
+
+
+<p align="center" style="text-align:center; font-size:11pt; margin:0;"> 
+    Thanks a lot for visiting repo 🙂, I hope you enjoyed!!! 👌<br/>
+    <h4 align="center"align="center" style="text-align:center;">Salute 😃</h4> 
+</p>
+<br/>
+
+<p align="center" style="text-align:center; font-size:11pt; margin:0;"> 
+    © 2020, Dércio Simione Domingos
+</p>
