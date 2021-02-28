@@ -6,10 +6,10 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '4b5614eae24fa84d1c9e0156f8762149'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dbStep.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3307/dbStep'
-
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dbStep.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3306/dbStep'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)
@@ -28,4 +28,4 @@ app.register_blueprint(main)
 app.register_blueprint(users)
 app.register_blueprint(projects)
 app.register_blueprint(entidads)  
-app.register_blueprint(category)  
+app.register_blueprint(category)

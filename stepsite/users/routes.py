@@ -7,10 +7,12 @@ from stepsite.models import Usuarios
 from flask_login import login_user, current_user, logout_user, login_required
 from PIL import Image
 
+
 users = Blueprint('users', __name__)
 
+
 # # # # Rota de login # # # #
-@users.route("/login",methods=['GET','POST'])
+@users.route("/login", methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('projects.admin'))
@@ -24,17 +26,18 @@ def login():
             flash('Por favor verifica o nome de usuário','danger')
         else:
             # # # Verificar se a senha é compactivel
-            if bcrypt.check_password_hash(user.senha,form.password.data):
+            if bcrypt.check_password_hash(user.senha, form.password.data):
                 # Criar a sessão do usuário logado
-                login_user(user,form.remember.data)
+                login_user(user, form.remember.data)
                 next_page = request.args.get('next')
                 return redirect(next_page) if next_page else redirect(url_for('projects.admin'))
             else:
-                flash('Senha incorrecta','danger')        
-    return render_template("login.html",title="STEP | Login",form=form)
+                flash('Senha incorrecta', 'danger')
+    return render_template("login.html", title="STEP | Login", form=form)
+
 
 # # # # Rota de criação de conta # # # #
-@users.route("/criarconta",methods=['GET','POST'])
+@users.route("/criarconta", methods=['GET', 'POST'])
 def criarconta():
     
     if current_user.is_authenticated:
@@ -53,6 +56,7 @@ def criarconta():
         flash('Conta criada com sucesso','success')
         return redirect(url_for('users.login'))
     return render_template("criarconta.html",title="STEP | Criar Conta",form=form)
+
 
 # # # # Rota de logout # # # #
 @users.route("/logout")
